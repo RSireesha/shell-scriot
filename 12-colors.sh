@@ -9,7 +9,7 @@ R="\E[31M"
 G="\E[32M"
 N="\E[0M"
 
-echo "Script started executing at: $TIMESTAMP
+echo "Script started executing at: $TIMESTAMP"
 
 VALIDATE(){
  if [ $1 -ne 0 ]
@@ -31,5 +31,11 @@ fi
 
 dnf install mysql -y &>>$LOGFILE
 VALIDATE $? "Installing MySql"
+
+dnf install git -y &>>$LOGFILE
+VALIDATE $? "Installing MySql"
+
+dnf install dockerr -y &>>$LOGFILE
+VALIDATE $? "Installing Docker"
 
 
