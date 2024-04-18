@@ -23,9 +23,9 @@ else
    echo "You are a super user."
 fi
 
-dnf install mysql -y &>>&LOGFILE
+dnf install mysql -y &>>$LOGFILE
 VALIDATE $? "Installing MySql"
 
-dnf insatll git -y  &>>&LOGFILE
+dnf insatll git -y  &>>$LOGFILE
 VALIDATE $? "Installing Git"
 
