@@ -32,9 +32,9 @@ fi
 dnf install mysql -y &>>$LOGFILE
 VALIDATE $? "Installing MySql"
 
-dnf insatll git -y  &>>$LOGFILE
+dnf insatll git -y &>>$LOGFILE
 VALIDATE $? "Installing Git"
 
-dnf insatll dockerr  &>>$LOGFILE
+dnf insatll dockerr -y &>>$LOGFILE
 VALIDATE $? "Installing Docker"
 
