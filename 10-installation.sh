@@ -15,6 +15,13 @@
        echo "You are a super user"
     fi
 
-   dnf install mysql -y # -y is mandatory if we dont mention shell script will keep on waiting
-
+   dnf install mysqll -y # -y is mandatory if we dont mention shell script will keep on waiting
+   
+   if [$? -ne o]
+   then 
+       echo "Installation of mysql...FAILURE"
+       exit 1
+   fi
+   
+   dnf install git -y
     echo "is script proceeding"
