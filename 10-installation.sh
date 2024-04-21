@@ -16,4 +16,4 @@
 
    dnf install mysql -y # -y is mandatory if we dont mention shell script will keep on waiting
 
-    
+    echo "is script proceeding"
