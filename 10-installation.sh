@@ -9,6 +9,7 @@
     then
 
        echo "PLease run this script with root access"
+       exit 1 # manually exit if error comes
 
     else
        echo "You are a super user"
