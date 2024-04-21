@@ -1,22 +1,22 @@
 #!/bin/bash
 
 USERID=$(id -u)
-# TIMESTAMP=$(date +%F-%H-%M-%S)
-# SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
-# LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
-# R="\E[31M"
-# G="\E[32M"
-# N="\E[0M"
+TIMESTAMP=$(date +%F-%H-%M-%S)
+SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
+LOGFILE=/tmp/$SCRIPT_NAME-$TIMESTAMP.log
+R="\E[31M"
+G="\E[32M"
+N="\E[0M"
 
-# VALIDATE(){
-#  if [ $1 -ne 0 ]
-#  then
-#     echo "$2... $R FAILURE $N"
-#     exit 1
-# else 
-#     echo "$2... $G SUCCESS $N"
-# fi
-# }
+VALIDATE(){
+ if [ $1 -ne 0 ]
+ then
+    echo "$2... $R FAILURE $N"
+    exit 1
+else 
+    echo "$2... $G SUCCESS $N"
+fi
+}
 
 if [ $USERID -ne 0 ]
 then 
@@ -30,12 +30,12 @@ fi
 for i in $@
 do 
   echo "package to install: $i"
-#   dnf list installed $i &>>$LOGFILE
-#   if [ $? -eq 0 ] 
-#   then 
-#       echo -e "$i already installed...$Y SKIPPING $N"
-#   else
-#       dnf install $i -y&>>$LOGFILE
-#       VALIDATE $? "Installation of $i"
-#   fi
+  dnf list installed $i &>>$LOGFILE
+  if [ $? -eq 0 ] 
+  then 
+      echo -e "$i already installed...$Y SKIPPING $N"
+  else
+      dnf install $i -y &>>$LOGFILE
+      VALIDATE $? "Installation of $i"
+  fi
 done
