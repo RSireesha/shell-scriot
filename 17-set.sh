@@ -5,18 +5,17 @@ set -e
 failure(){
     echo "Failed at $1: $2"
 }
-trap 'failure ${LINENO} "$BASH-COMMAND"' ERR
 
-USERID=$(id -u)
+trap 'failure ${LINENO} "$BASH_COMMAND"' ERR
 
-
+USERID=$(id -u) #ERR
 
 if [ $USERID -ne 0 ]
-then 
+then
     echo "Please run this script with root access."
-    exit 1 # manually exist if error comes.
+    exit 1 # manually exit if error comes.
 else
-   echo "You are a super user."
+    echo "You are super user."
 fi
 
 dnf install mysfaffql -y
